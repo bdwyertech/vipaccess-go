@@ -246,7 +246,7 @@ var successNeedle = []byte("Your VIP Credential is working correctly.")
 // Validate sends the credential ID with a current TOTP code to Symantec to
 // verify it is working.
 func (c *Credential) Validate() error {
-	otp := generateTOTPCode(c.Key, time.Now())
+	otp := GenerateTOTPCode(c.Key, time.Now())
 
 	form := url.Values{
 		"cred": {c.ID},
@@ -273,9 +273,9 @@ func (c *Credential) Validate() error {
 	return nil
 }
 
-// generateTOTPCode returns a 6 digit numeric code based on the given 20 byte
+// GenerateTOTPCode returns a 6 digit numeric code based on the given 20 byte
 // secret and time using the RFC 6238 algorithm.
-func generateTOTPCode(secret []byte, t time.Time) string {
+func GenerateTOTPCode(secret []byte, t time.Time) string {
 	ctr := make([]byte, 8)
 	binary.BigEndian.PutUint64(ctr, uint64(t.Unix()/30))
 
