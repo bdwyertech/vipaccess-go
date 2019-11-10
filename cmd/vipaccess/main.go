@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/athomason/vipaccess-go/vipaccess"
+	"github.com/bdwyertech/vipaccess-go/vipaccess"
 )
 
 func main() {
